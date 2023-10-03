@@ -46,7 +46,7 @@ void display(int sequence) {
 int main()
 {
     char letters[26] = "Letters.txt";
-    char sequence[26] = "Sequence-1.txt";
+    char sequence[26] = "Sequence.txt";
 
     ifstream lettersFile, sequenceFile;
 
@@ -67,7 +67,7 @@ int main()
         putItem(line[0]);
     }
 
-    // Read sequence numbers from the "Sequence-1.txt" file and display corresponding letters
+    // Read sequence numbers from the "Sequence.txt" file and display corresponding letters
     while (sequenceFile >> n) {
         cout << "Letter at " << n << ": ";
         display(n + last);
