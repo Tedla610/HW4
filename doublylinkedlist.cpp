@@ -1,3 +1,7 @@
+// Name: Tedla Boke
+// NetId: uq6435
+// Email: tboke@horizon.csueastbay.edu
+
 #include<iostream>
 #include<fstream>
 
@@ -10,14 +14,14 @@ struct node
     node *prev;
 };
 
-node *start = NULL;
+node *start = nullptr;
 
 void putItem(char item) // Adding a node
 {
     node *temp = new node;
     temp->data = item;
 
-    if (start == NULL) {
+    if (start == nullptr) {
         start = temp;
         temp->next = temp->prev = temp;
     } else {
@@ -29,18 +33,18 @@ void putItem(char item) // Adding a node
     }
 }
 
-void displayUtil(int sequence, node *ptr) {
+void PrintAll(int sequence, node *ptr) {
     if (sequence == 0) {
         cout << ptr->data;
     } else if (sequence > 0) {
-        displayUtil(sequence - 1, ptr->next);
-    } else if (sequence < 0) {
-        displayUtil(sequence + 1, ptr->prev);
+        PrintAll(sequence - 1, ptr->next);
+    } else {
+        PrintAll(sequence + 1, ptr->prev);
     }
 }
 
-void display(int sequence) {
-    displayUtil(sequence, start);
+void Print(int sequence) {
+    PrintAll(sequence, start);
 }
 
 int main()
@@ -70,7 +74,7 @@ int main()
     // Read sequence numbers from the "Sequence.txt" file and display corresponding letters
     while (sequenceFile >> n) {
         cout << "Letter at " << n << ": ";
-        display(n + last);
+        Print(n + last);
 
         // Remove the comma from the input file
         if (sequenceFile.peek() == ',') {
